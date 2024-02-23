@@ -20,8 +20,7 @@
   </header>
 
   <main>
-    <div id="canva">
-      <canvas id="game" width="800" height="600"></canvas>
+    <canvas id="game"></canvas>
   </main>
 
 </body>
@@ -29,10 +28,23 @@
 </html>
 
 <script>
-  function run() {
+
+  CONST = {
+    CANVAS_WIDTH: window.innerWidth - 20 || 800,
+    CANVAS_HEIGHT: window.innerHeight - 20 || 600,
+  }
+
+  function initCanvas() {
     const canvas = document.getElementById('game');
     const ctx = canvas.getContext('2d');
-    
+    canvas.width = CONST.CANVAS_WIDTH;
+    canvas.height = CONST.CANVAS_HEIGHT;
+    return ctx;
+  }
+
+  function run() {
+    console.log(initCanvas());
+
   }
 
   window.addEventListener('DOMContentLoaded', function () {

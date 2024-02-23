@@ -18,13 +18,16 @@
     box-sizing: border-box;
 }
 
-ul,
-ol {
-    list-style-type: none;
-}
-
 body {
     font-family: Roboto, sans-serif;
     color: var(--dark);
     background-color: var(--light);
+}
+
+#game {
+    border: 5px solid var(--dark);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
