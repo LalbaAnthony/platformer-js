@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
+  <script type="text/javascript" src="utils/canvas.js"></script>
+  <script type="text/javascript" src="player.js"></script>
+  <script type="text/javascript" src="map.js"></script>
   <script type="text/javascript" src="main.js"></script>
   <link rel="stylesheet" href="style/main.css">
 </head>
@@ -29,25 +32,27 @@
 
 <script>
 
-  CONST = {
-    CANVAS_WIDTH: window.innerWidth - 20 || 800,
-    CANVAS_HEIGHT: window.innerHeight - 20 || 600,
-  }
-
-  function initCanvas() {
-    const canvas = document.getElementById('game');
-    const ctx = canvas.getContext('2d');
-    canvas.width = CONST.CANVAS_WIDTH;
-    canvas.height = CONST.CANVAS_HEIGHT;
-    return ctx;
-  }
-
+  const game = new Game();
   function run() {
-    console.log(initCanvas());
-    const game = new Game();
+    game.player.display();
+    console.log(game.player.ctx);
   }
 
   window.addEventListener('DOMContentLoaded', function () {
     run();
   });
+
+  // Handle input from keyboard
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') {
+      game.player.moveRight();
+    }
+    if (e.key === 'ArrowLeft') {
+      game.player.moveLeft();
+    }
+    if (e.key === 'ArrowUp' || e.key === ' ') {
+      game.player.jump();
+    }
+  });
+
 </script>
