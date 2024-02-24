@@ -3,8 +3,8 @@ CONST = {
   CANVAS_HEIGHT: window.innerHeight - 20 || 600,
 }
 
-function getGameCanvas() {
-  const canvas = document.getElementById('game');
+function getGameCanvas(id = 'game') {
+  const canvas = document.getElementById(id);
   const ctx = canvas.getContext('2d');
   canvas.width = CONST.CANVAS_WIDTH;
   canvas.height = CONST.CANVAS_HEIGHT;

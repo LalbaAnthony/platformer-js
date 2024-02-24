@@ -11,16 +11,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
   <script type="text/javascript" src="utils/canvas.js"></script>
-  <script type="text/javascript" src="player.js"></script>
-  <script type="text/javascript" src="map.js"></script>
-  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="classes/player.js"></script>
+  <script type="text/javascript" src="classes/map.js"></script>
+  <script type="text/javascript" src="classes/game.js"></script>
   <link rel="stylesheet" href="style/main.css">
 </head>
 
 <body>
-
-  <header>
-  </header>
 
   <main>
     <noscript>You must have JavaScript enabled to use this site.</noscript>
@@ -34,7 +31,7 @@
 <script>
 
   // Create a new game
-  const game = new Game();
+  const game = new Game(false);
 
   // Start the game when the page is loaded
   window.addEventListener('DOMContentLoaded', function () {
@@ -43,21 +40,22 @@
 
   // Handle input from keyboard
   window.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight') {
+    // Player movement
+    if (e.key === 'ArrowRight' || e.key === 'd') {
       game.player.moveRight();
       game.udpate();
     }
-    if (e.key === 'ArrowLeft') {
+    if (e.key === 'ArrowLeft' || e.key === 'q') {
       game.player.moveLeft();
       game.udpate();
     }
     if (e.key === 'ArrowUp' || e.key === ' ') {
-      game.player.moveUp();
+      game.player.jump();
       game.udpate();
     }
-    if (e.key === 'ArrowDown') {
-      game.player.moveDown();
-      game.udpate();
+    // Debug commande
+    if (e.key === 'n') {
+      game.toggleDebug();
     }
   });
 
