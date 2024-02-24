@@ -40,23 +40,26 @@
 
   // Handle input from keyboard
   window.addEventListener('keydown', function (e) {
-    // Player movement
-    if (e.key === 'ArrowRight' || e.key === 'd') {
-      game.player.moveRight();
-      game.udpate();
+    switch (e.key) {
+      // Move the player
+      case 'ArrowRight':
+      case 'd':
+        game.player.moveRight();
+        break;
+      case 'ArrowLeft':
+      case 'q':
+        game.player.moveLeft();
+        break;
+      case 'ArrowUp':
+      case ' ':
+        game.player.jump();
+        break;
+      // Toggle debug mode
+      case 'n':
+        game.toggleDebug();
+        break;
     }
-    if (e.key === 'ArrowLeft' || e.key === 'q') {
-      game.player.moveLeft();
-      game.udpate();
-    }
-    if (e.key === 'ArrowUp' || e.key === ' ') {
-      game.player.jump();
-      game.udpate();
-    }
-    // Debug commande
-    if (e.key === 'n') {
-      game.toggleDebug();
-    }
+    game.udpate();
   });
 
 </script>

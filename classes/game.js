@@ -22,9 +22,7 @@ class Game {
         this.map.draw();
         this.checkCollision();
         this.player.draw();
-        if (this.debug) {
-            console.log(`Player position: x: ${this.player.x}, y: ${this.player.y}`);
-        }
+        if (this.debug) console.log(`Player position: x: ${this.player.x}, y: ${this.player.y}`);
         requestAnimationFrame(this.update.bind(this));
     }
 
@@ -34,5 +32,6 @@ class Game {
 
     toggleDebug() {
         this.debug = !this.debug;
+        this.update();
     }
 }
