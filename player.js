@@ -1,8 +1,7 @@
 class Player {
-    constructor(name) {
-        this.name = name;
-        this.score = 0;
+    constructor() {
         this.ctx = getGameCanvas();
+        this.score = 0;
         this.width = 10;
         this.height = 10;
         this.x = 0;
@@ -10,9 +9,9 @@ class Player {
     }
 
     display() {
+        // console.log('y', this.y, 'x', this.x, 'width', this.width, 'height', this.height);
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
         this.ctx.fillStyle = "blue";
-        console.log('y', this.y, 'x', this.x, 'width', this.width, 'height', this.height);
         this.ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
@@ -21,7 +20,7 @@ class Player {
             return;
         }
         this.x -= 10;
-        this.display();
+        requestAnimationFrame(this.display());
     }
 
     moveRight() {
@@ -29,15 +28,23 @@ class Player {
             return;
         }
         this.x += 10;
-        this.display();
+        requestAnimationFrame(this.display());
     }
 
-    jump() {
+    moveUp() {
         if (this.y <= 0) {
             return;
         }
         this.y -= 10;
-        this.display();
+        requestAnimationFrame(this.display());
+    }
+
+    moveDown() {
+        if (this.y >= this.ctx.canvas.height - this.height) {
+            return;
+        }
+        this.y += 10;
+        requestAnimationFrame(this.display());
     }
 
     updateScore() {

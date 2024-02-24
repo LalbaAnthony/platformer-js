@@ -51,7 +51,10 @@
       game.player.moveLeft();
     }
     if (e.key === 'ArrowUp' || e.key === ' ') {
-      game.player.jump();
+      game.player.moveUp();
+    }
+    if (e.key === 'ArrowDown') {
+      game.player.moveDown();
     }
   });
 
