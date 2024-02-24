@@ -23,13 +23,13 @@ class Player {
         this.x += 5;
     }
 
-    jump() {
+    jump(size = 10) {
         if (this.isJumping) return;
         this.isJumping = true;
-        this.y -= 5;
+        this.y -= size;
     }
 
-    gravity(strength = .1) {
+    gravity(strength = .2) {
         if (this.y < this.ctx.canvas.height - this.height)  {
             this.y += strength;
         }
