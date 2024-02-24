@@ -6,7 +6,15 @@ class Game {
         this.debug = false;
         this.map = new Map();
         this.player = new Player();
-        this.ctx.fillStyle = "red";
-        this.ctx.fillRect(50, 50, 50, 50);
+    }
+
+    update() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+        this.player.draw();
+        requestAnimationFrame(this.update.bind(this));
+    }
+
+    start() {
+        this.update();
     }
 }

@@ -23,6 +23,7 @@
   </header>
 
   <main>
+    <noscript>You must have JavaScript enabled to use this site.</noscript>
     <canvas id="game"></canvas>
   </main>
 
@@ -32,29 +33,31 @@
 
 <script>
 
+  // Create a new game
   const game = new Game();
-  function run() {
-    game.player.display();
-    console.log(game.player.ctx);
-  }
 
+  // Start the game when the page is loaded
   window.addEventListener('DOMContentLoaded', function () {
-    run();
+    game.start();
   });
 
   // Handle input from keyboard
   window.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowRight') {
       game.player.moveRight();
+      game.udpate();
     }
     if (e.key === 'ArrowLeft') {
       game.player.moveLeft();
+      game.udpate();
     }
     if (e.key === 'ArrowUp' || e.key === ' ') {
       game.player.moveUp();
+      game.udpate();
     }
     if (e.key === 'ArrowDown') {
       game.player.moveDown();
+      game.udpate();
     }
   });
 
